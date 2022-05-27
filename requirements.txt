@@ -1,0 +1,8 @@
+soundfile
+pyaudio
+pyyaml
+tritonclient[all]
+pandas
+librosa
+sox
+tqdm
