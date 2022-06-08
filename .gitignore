@@ -1,5 +1,11 @@
-/dataset
-/models
-__pycache__
-**/__pycache__
+sync_async_stream_requests_jasper/dataset
+sync_async_stream_requests_jasper/models
+sync_async_stream_requests_jasper/__pycache__
+sync_async_stream_requests_jasper/**/__pycache__
+
+sequence_batcher_gpt2/models/ensemble_pipeline/1/
+sequence_batcher_gpt2/models/generator_onnx/1/
+sequence_batcher_gpt2/models/generator_torchscript/1/
+sequence_batcher_gpt2/persistence/
+
 

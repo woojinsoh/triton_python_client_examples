@@ -27,4 +27,4 @@ wget -N -P models/jasper-onnx-ensemble https://raw.githubusercontent.com/NVIDIA/
 sleep 3
 
 # Load ensemble model using Triton Client API
-curl -H 'Content-Type: application/json' -X POST -i localhost:8000/v2/repository/models/jasper-onnx-ensemble/load
+#curl -H 'Content-Type: application/json' -X POST -i localhost:8000/v2/repository/models/jasper-onnx-ensemble/load
