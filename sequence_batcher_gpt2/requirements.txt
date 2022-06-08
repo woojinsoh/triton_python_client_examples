@@ -1,0 +1,5 @@
+cmake
+transformers
+torch
+onnxruntime
+tritonclient[all]

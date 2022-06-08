@@ -1,0 +1,20 @@
+name: "generator_torchscript"
+backend: "pytorch"
+max_batch_size: 16
+input [
+{
+    name: "INPUT__0"
+    data_type: TYPE_INT64
+    dims: [ -1 ]
+}
+]
+ 
+output [
+{
+    name: "OUTPUT__0"
+    data_type: TYPE_FP32
+    dims: [ -1, 50257 ]
+}
+]
+
+instance_group [{ kind: KIND_CPU }]

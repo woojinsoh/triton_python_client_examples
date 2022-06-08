@@ -1,0 +1,61 @@
+name: "tokenizer"
+backend: "python"
+max_batch_size: 4
+sequence_batching {
+    max_sequence_idle_microseconds: 10000000  #10secs
+#    oldest {
+#        max_queue_delay_microseconds: 1000000
+#        max_candidate_sequences: 20
+#    }
+    direct {
+        max_queue_delay_microseconds: 1000000
+        minimum_slot_utilization: 1
+    }
+    control_input [
+        {
+            name: "START"
+            control [
+                {
+                    kind: CONTROL_SEQUENCE_START
+                    int32_false_true: [ 0, 1 ]
+                }
+            ]
+        },
+        {
+            name: "END"
+            control [
+                {
+                    kind: CONTROL_SEQUENCE_END
+                    int32_false_true: [ 0, 1 ]
+                }
+            ]
+        },
+        {
+            name: "CORR_ID"
+            control [
+                {
+                    kind: CONTROL_SEQUENCE_CORRID
+                    data_type: TYPE_UINT64
+                }
+            ]
+        }
+    ]
+}
+input [
+    {
+        name: "INPUT_TOKENS"
+        data_type: TYPE_STRING
+        dims: [ 1 ]
+        reshape: {shape: [ ]}
+    }
+]
+ 
+output [
+    {
+        name: "ENCODED_INPUT_TOKENS"
+        data_type: TYPE_INT64
+        dims: [ -1 ]
+    }
+]
+
+instance_group [{ kind: KIND_CPU }]

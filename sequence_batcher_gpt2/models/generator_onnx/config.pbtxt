@@ -1,0 +1,20 @@
+name: "generator_onnx"
+backend: "onnxruntime"
+max_batch_size: 4
+input [
+{
+    name: "INPUT_TOKEN_IDS"
+    data_type: TYPE_INT64
+    dims: [ -1 ]
+}
+]
+ 
+output [
+{
+    name: "OUTPUT_LOGITS"
+    data_type: TYPE_FP32
+    dims: [ -1, 50257 ]
+}
+]
+
+instance_group [{ kind: KIND_CPU }]

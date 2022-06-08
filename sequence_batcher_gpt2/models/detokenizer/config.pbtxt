@@ -1,0 +1,27 @@
+name: "detokenizer"
+backend: "python"
+max_batch_size: 4
+input [
+{
+    name: "INPUT_LOGITS"
+    data_type: TYPE_FP32
+    dims: [ -1, 50257 ]
+}
+]
+ 
+output [
+{
+    name: "OUTPUT_TOKENS"
+    data_type: TYPE_STRING
+    dims: [ 1 ]
+}
+]
+
+instance_group [{ kind: KIND_CPU }]
+
+parameters [ 
+    {
+        key: "vocab_path"
+        value: {string_value: "persistence/vocab.json"}
+    }
+]
